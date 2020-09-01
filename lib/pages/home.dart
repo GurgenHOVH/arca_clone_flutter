@@ -1,5 +1,7 @@
 import 'package:arca/models/card_details.dart';
 import 'package:arca/pages/cards_page.dart';
+import 'package:arca/pages/pay_page.dart';
+import 'package:arca/pages/transfer_page.dart';
 import 'package:arca/widgets/card.dart';
 import 'package:flutter/material.dart';
 
@@ -105,21 +107,9 @@ class _HomePageState extends State<HomePage>
         ),
         Expanded(
           child: TabBarView(controller: tabController, children: [
-            Text('data1'),
-            Text('data2'),
+            TransferPage(),
+            PayPage(),
             CardsPage(),
-            // Center(
-            //   child: CreditCard(
-            //     cardDetails: CardDetails(
-            //       'AMERIABANK',
-            //       CardType.Master,
-            //       1430345698762345,
-            //       345900,
-            //       DateTime.now().subtract(Duration(hours: 1)),
-            //       DateTime(2022, 08, 01),
-            //     ),
-            //   ),
-            // ),
             Text('data4'),
             Text('data5'),
           ]),

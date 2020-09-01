@@ -27,6 +27,14 @@ class _CardsPageState extends State<CardsPage> {
     ),
   ];
 
+  List<String> listItems = [
+    'Կանխադրված',
+    'Քարտից քարտ փոխանցում',
+    'Ծառայություններ',
+    'Սահմանաչափեր',
+    'Քարտային Գործարքներ'
+  ];
+
   int selectedCard = 0;
 
   @override
@@ -60,30 +68,35 @@ class _CardsPageState extends State<CardsPage> {
             }),
           ),
         ),
-        Column(
-          children: [
-            ListTile(
-              title: Text('wdwdwddw')
-            ),
-            ListTile(
-              title: Text('wdwdwddw')
-            ),
-            ListTile(
-              title: Text('wdwdwddw')
-            ),
-            ListTile(
-              title: Text('wdwdwddw')
-            ),
-            ListTile(
-              title: Text('wdwdwddw')
-            ),
-            ListTile(
-              title: Text('wdwdwddw')
-            ),
-            ListTile(
-              title: Text('wdwdwddw')
-            ),
-          ],
+        ListView.separated(
+          physics: NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          itemCount: listItems.length,
+          itemBuilder: (context, index) {
+            return ListTile(
+              title: Text(
+                listItems[index],
+                style: TextStyle(
+                  color: index != 0 ? Color(0xff1356A5) : Color(0xff63CB93),
+                  fontWeight: FontWeight.bold
+                ),
+              ),
+              trailing: index == 0
+                  ? Icon(
+                      Icons.check,
+                      color: Color(0xff63CB93),
+                    )
+                  : null,
+            );
+          },
+          separatorBuilder: (context, index) {
+            return Divider(
+              indent: 15,
+              endIndent: 15,
+              color: Colors.black26,
+              thickness: 2,
+            );
+          },
         )
       ])),
     );
