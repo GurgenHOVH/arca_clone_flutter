@@ -2,6 +2,7 @@ import 'package:arca/models/card_details.dart';
 import 'package:arca/pages/cards_page.dart';
 import 'package:arca/pages/groups_page.dart';
 import 'package:arca/pages/pay_page.dart';
+import 'package:arca/pages/settings_page.dart';
 import 'package:arca/pages/transfer_page.dart';
 import 'package:arca/widgets/card.dart';
 import 'package:flutter/material.dart';
@@ -32,6 +33,13 @@ class _HomePageState extends State<HomePage>
     super.initState();
 
     tabController = TabController(length: 5, vsync: this, initialIndex: 2);
+
+    tabController.addListener(() {
+      FocusScope.of(context).unfocus();
+      setState(() {
+        title = titles[tabController.index];
+      });
+    });
   }
 
   @override
@@ -46,7 +54,14 @@ class _HomePageState extends State<HomePage>
             IconButton(
               icon: Icon(title == 'Քարտեր' ? Icons.sort : Icons.settings),
               onPressed: () {
-                if (title == 'Հաշիվ') {}
+                if (title == 'Հաշիվ') {
+                  // Navigator.of(context).push(
+                  //   MaterialPageRoute(builder: (context) {
+                  //     return SettingsPage();
+                  //   })
+                  // );
+                  Navigator.of(context).pushNamed('settings');
+                }
               },
             ),
         ],
@@ -80,11 +95,6 @@ class _HomePageState extends State<HomePage>
             )),
             unselectedLabelColor: Theme.of(context).disabledColor,
             controller: tabController,
-            onTap: (index) {
-              setState(() {
-                title = titles[index];
-              });
-            },
             tabs: [
               Tab(
                 text: 'Փոխանցել',

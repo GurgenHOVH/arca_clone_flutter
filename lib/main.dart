@@ -1,4 +1,5 @@
 import 'package:arca/pages/home.dart';
+import 'package:arca/pages/settings_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -15,6 +16,9 @@ class ArcaApp extends StatelessWidget {
         disabledColor: Color(0xffB2B2B2)
       ),
       home: HomePage(),
+      routes: {
+        'settings': (context) => SettingsPage()
+      },
     );
   }
 }

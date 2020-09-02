@@ -26,6 +26,7 @@ class _PayPageState extends State<PayPage> {
       children: [
         Expanded(
           child: ListView.separated(
+            physics: BouncingScrollPhysics(),
             padding: EdgeInsets.all(15),
             itemBuilder: (context, index) {
               return Padding(
