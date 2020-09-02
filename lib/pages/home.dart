@@ -1,5 +1,6 @@
 import 'package:arca/models/card_details.dart';
 import 'package:arca/pages/cards_page.dart';
+import 'package:arca/pages/groups_page.dart';
 import 'package:arca/pages/pay_page.dart';
 import 'package:arca/pages/transfer_page.dart';
 import 'package:arca/widgets/card.dart';
@@ -41,10 +42,13 @@ class _HomePageState extends State<HomePage>
         elevation: 0,
         backgroundColor: Theme.of(context).primaryColor,
         actions: [
-          IconButton(
-            icon: Icon(Icons.sort),
-            onPressed: () {},
-          ),
+          if (title == 'Քարտեր' || title == 'Հաշիվ')
+            IconButton(
+              icon: Icon(title == 'Քարտեր' ? Icons.sort : Icons.settings),
+              onPressed: () {
+                if (title == 'Հաշիվ') {}
+              },
+            ),
         ],
       ),
       body: body(),
@@ -110,7 +114,7 @@ class _HomePageState extends State<HomePage>
             TransferPage(),
             PayPage(),
             CardsPage(),
-            Text('data4'),
+            GroupsPage(),
             Text('data5'),
           ]),
         )
